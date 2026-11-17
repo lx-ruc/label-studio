@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频文化影像分析系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-logo">🎬</div>
+            <div class="brand-text">
+                <h1>非遗影像文化元素智能分析系统</h1>
+                <span>QWEN2.5-VL · CULTURAL VIDEO INTELLIGENCE</span>
+            </div>
+        </div>
+        <div class="topbar-status">
+            <span id="modelStatusBadge" class="status-dot">
+                <span class="dot"></span>
+                <span id="modelStatusText">模型未加载</span>
+            </span>
+        </div>
+    </header>
+
+    <!-- 主布局 -->
+    <div class="layout">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="section-title">模型配置</div>
+                <div class="field">
+                    <label>模型路径</label>
+                    <input type="text" id="modelPath" value="/home/u20240148/project/Qwen2.5-VL/Qwenvl_72B">
+                    <div class="hint">Qwen2.5-VL 模型本地路径</div>
+                </div>
+                <div class="field">
+                    <label>GPU ID</label>
+                    <input type="text" id="gpuIds" value="0,1,2,3">
+                    <div class="hint">格式如 0,1,2,3；留空使用全部 GPU</div>
+                </div>
+                <button id="loadModelBtn" class="btn btn-accent btn-block">加载模型</button>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">使用指引</div>
+                <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+                    1. 侧边栏加载模型（首次约数分钟）<br>
+                    2. 上传视频并点击「开始分析」<br>
+                    3. 在「分析结果」标签查看详情<br>
+                    4. 可下载 JSON 格式结果
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">支持格式</div>
+                <div class="chips">
+                    <span class="chip">MP4</span>
+                    <span class="chip">AVI</span>
+                    <span class="chip">MOV</span>
+                    <span class="chip">MKV</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容 -->
+        <main class="main">
+            <!-- 标签切换 -->
+            <div class="tabs">
+                <div class="tab active" data-tab="upload">📤 视频上传与分析</div>
+                <div class="tab" data-tab="result">📊 分析结果</div>
+            </div>
+
+            <!-- 上传面板 -->
+            <div id="tab-upload" class="tab-panel active">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="icon">📤</span>上传视频文件</div>
+                    </div>
+                    <div class="card-body">
+                        <label class="upload-zone" id="uploadZone">
+                            <div class="upload-icon">📁</div>
+                            <div class="upload-text">点击选择或拖拽视频到此处</div>
+                            <div class="upload-hint">支持 MP4 / AVI / MOV / MKV 格式</div>
+                            <input type="file" id="videoInput" accept=".mp4,.avi,.mov,.mkv,video/*">
+                        </label>
+
+                        <div id="fileInfoWrap" style="display:none;">
+                            <div class="file-info">
+                                <div class="file-icon">🎞️</div>
+                                <div class="file-meta">
+                                    <div class="file-name" id="fileName">—</div>
+                                    <div class="file-size" id="fileSize">—</div>
+                                </div>
+                            </div>
+                            <div class="video-preview">
+                                <video id="videoPreview" controls></video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="icon">⚙️</span>分析操作</div>
+                    </div>
+                    <div class="card-body">
+                        <div id="analysisAlert"></div>
+                        <button id="analyzeBtn" class="btn btn-primary btn-block" disabled>开始分析</button>
+
+                        <div id="progressWrap" class="progress-wrap" style="display:none;">
+                            <div class="progress-label">
+                                <span id="progressStage">正在分析…</span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <div id="downloadWrap" style="display:none; margin-top:14px;">
+                            <a id="downloadBtn" class="btn btn-outline btn-block" href="/api/download" download>📥 下载分析结果 (JSON)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 结果面板 -->
+            <div id="tab-result" class="tab-panel">
+                <div id="resultContainer">
+                    <div class="result-empty">
+                        <div class="empty-icon">📊</div>
+                        <div class="empty-text">暂无分析结果</div>
+                        <div class="empty-hint">请先在「视频上传与分析」标签上传视频并完成分析</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        基于 Qwen2.5-VL 模型 · 视频文化影像分析系统
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

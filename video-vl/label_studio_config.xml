@@ -1,0 +1,168 @@
+<View>
+  <Header value="非遗影像文化元素智能分析标注" />
+  <Video name="video" value="$video" sync="true" />
+
+  <!-- 模块三：非遗文化信息 -->
+  <Header value="模块三 · 非遗文化信息" />
+
+  <View style="display: flex; gap: 1em;">
+    <View style="width: 50%;">
+      <Header value="非遗类型（可多选）" />
+      <Choices name="heritage_type" toName="video" choice="multiple" showInLine="false">
+        <Choice value="民间文学" />
+        <Choice value="传统音乐" />
+        <Choice value="传统舞蹈" />
+        <Choice value="传统戏剧" />
+        <Choice value="曲艺" />
+        <Choice value="传统体育游艺与杂技" />
+        <Choice value="传统美术" />
+        <Choice value="传统技艺" />
+        <Choice value="传统医药" />
+        <Choice value="民俗" />
+        <Choice value="其他" />
+      </Choices>
+    </View>
+    <View style="width: 50%;">
+      <Header value="社会文化语境" />
+      <Choices name="urban_rural_scene" toName="video" choice="single" showInLine="true">
+        <Choice value="乡村社区" />
+        <Choice value="城市街区" />
+        <Choice value="市场场域" />
+        <Choice value="家庭空间" />
+        <Choice value="宗教/仪式场所" />
+        <Choice value="舞台/表演场所" />
+        <Choice value="作坊/生产场所" />
+        <Choice value="其他" />
+        <Choice value="无法确定" />
+      </Choices>
+    </View>
+  </View>
+
+  <Header value="物质文化元素" />
+  <TextArea name="material_elements" toName="video" perRegion="false" rows="4"
+            placeholder="道具：；服饰：；建筑与场地：；民族或地区关联：" />
+
+  <Header value="非物质文化元素" />
+  <TextArea name="intangible_elements" toName="video" perRegion="false" rows="5"
+            placeholder="仪式元素：；技艺流程：；口述传统文本：；身体动作序列：" />
+
+  <Header value="使用语境（可多选）" />
+  <Choices name="usage_context" toName="video" choice="multiple" showInLine="true">
+    <Choice value="仪式化" />
+    <Choice value="娱乐化" />
+    <Choice value="商业化" />
+    <Choice value="教学演示" />
+    <Choice value="日常生活" />
+    <Choice value="其他" />
+    <Choice value="无法确定" />
+  </Choices>
+
+  <Header value="观众类型（可多选）" />
+  <Choices name="audience_type" toName="video" choice="multiple" showInLine="true">
+    <Choice value="本地居民" />
+    <Choice value="游客" />
+    <Choice value="官方人员" />
+    <Choice value="学徒" />
+    <Choice value="儿童" />
+    <Choice value="其他" />
+    <Choice value="无法确定" />
+  </Choices>
+
+  <Header value="技艺/仪式流程文字描述" />
+  <TextArea name="process_analysis" toName="video" perRegion="false" rows="5"
+            placeholder="技艺流程分段：；仪式程序分段：；关键步骤：" />
+
+  <!-- 模块四：影像技术与风格分析 -->
+  <Header value="模块四 · 影像技术与风格分析" />
+
+  <Header value="声音内容分析" />
+  <TextArea name="audio_analysis" toName="video" perRegion="false" rows="4"
+            placeholder="环境音类型：；传统乐器识别：；唱腔类型：" />
+
+  <Choices name="has_narration" toName="video" choice="single" showInLine="true">
+    <Choice value="有旁白" />
+    <Choice value="无旁白" />
+    <Choice value="无法确定" />
+  </Choices>
+
+  <Header value="场景与景别" />
+  <TextArea name="scene_shot_analysis" toName="video" perRegion="false" rows="4"
+            placeholder="场景：；景别：" />
+
+  <Header value="色彩风格分析" />
+  <TextArea name="color_style_analysis" toName="video" perRegion="false" rows="4"
+            placeholder="色调：；饱和度：；民族色彩特征：" />
+
+  <Header value="镜头运动类型（可多选）" />
+  <Choices name="camera_movement" toName="video" choice="multiple" showInLine="true">
+    <Choice value="固定机位" />
+    <Choice value="推镜头" />
+    <Choice value="拉镜头" />
+    <Choice value="摇镜头" />
+    <Choice value="移镜头" />
+    <Choice value="推拉摇移" />
+    <Choice value="手持镜头" />
+    <Choice value="跟拍镜头" />
+    <Choice value="航拍镜头（无人机）" />
+    <Choice value="其他" />
+    <Choice value="无法确定" />
+  </Choices>
+
+  <Header value="镜头节奏统计" />
+  <TextArea name="shot_rhythm" toName="video" perRegion="false" rows="4"
+            placeholder="平均镜头长度：；稳定vs快剪比例：；长镜头分布：" />
+
+  <!-- 模块五：人物与社会关系结构 -->
+  <Header value="模块五 · 人物与社会关系结构" />
+
+  <TextArea name="person_social_identity" toName="video" perRegion="false" rows="4"
+            placeholder="人物社会身份，如传承人、学徒、村干部、商业经营者等" />
+  <TextArea name="person_relationship" toName="video" perRegion="false" rows="4"
+            placeholder="人物关系，如师徒、家庭成员、社区角色等" />
+  <TextArea name="community_structure" toName="video" perRegion="false" rows="4"
+            placeholder="社区或群体结构及互动方式" />
+
+  <!-- 模块六：叙事与语义层级分析 -->
+  <Header value="模块六 · 叙事与语义层级分析" />
+
+  <Choices name="narrative_structure" toName="video" choice="multiple" showInLine="false">
+    <Choice value="线性叙事" />
+    <Choice value="非线性叙事" />
+    <Choice value="环状结构" />
+    <Choice value="并置结构" />
+    <Choice value="多声部叙事" />
+    <Choice value="观察式叙事" />
+    <Choice value="提问式（访谈驱动）叙事" />
+    <Choice value="过程性（技艺流程）叙事" />
+    <Choice value="档案式/历史拼贴叙事" />
+    <Choice value="片段式/段落式叙事" />
+    <Choice value="仪式化叙事结构" />
+    <Choice value="师徒/传承叙事结构" />
+    <Choice value="空间迁移叙事" />
+    <Choice value="季节/节令叙事" />
+    <Choice value="冲突驱动文化叙事" />
+    <Choice value="其他" />
+    <Choice value="无法确定" />
+  </Choices>
+
+  <TextArea name="theme_cluster" toName="video" perRegion="false" rows="5"
+            placeholder="主要主题：；子主题：" />
+  <TextArea name="value_emotion" toName="video" perRegion="false" rows="5"
+            placeholder="价值取向：；情感分析：" />
+  <TextArea name="conflict_points" toName="video" perRegion="false" rows="4"
+            placeholder="冲突点，如代际冲突、资源争夺、地方政策影响等" />
+
+  <!-- 时间轴标注：用于人工细化技艺/仪式流程 -->
+  <Header value="时间轴：技艺/仪式流程（可选）" />
+  <VideoLabels name="process_segments" toName="video">
+    <Label value="备料" background="#1f77b4" />
+    <Label value="制作" background="#2ca02c" />
+    <Label value="表演" background="#d62728" />
+    <Label value="仪式开始" background="#9467bd" />
+    <Label value="正仪式" background="#8c564b" />
+    <Label value="收尾/结束" background="#e377c2" />
+    <Label value="其他" background="#7f7f7f" />
+  </VideoLabels>
+  <TextArea name="segment_note" toName="video" perRegion="true" rows="2"
+            placeholder="对选中的时间段补充说明" />
+</View>

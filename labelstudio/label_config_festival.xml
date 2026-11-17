@@ -1,0 +1,127 @@
+<View>
+  <Style>
+    .lsq { font-size: 13px; color: #555; line-height: 1.6; margin: 4px 0 8px; }
+    .box { border: 1px solid #e3e3e3; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  </Style>
+  <Header value="节日志影像标注"/>
+  <Text name="tip" value="上半部分：视频和实体实例层（O）的要素框，AI 已圈出主要人物、器具、服饰等，只改错的和补漏的。下半部分：场景层（C）与事件叙事层（N）共 10 个字段，AI 已预填。"/>
+  <Video name="video" value="$video" frameRate="25"/>
+  <VideoRectangle name="box" toName="video"/>
+  <!-- 实体实例层（O）的 8 类框。预标注里的 from_name 必须写 tag（标签控件名）。
+       AI 预填只覆盖能自动识别的 5 类：人物、器具与工具、材料与制作物、
+       服饰与配饰、装置与标识物；群体单元 / 身体部位 / 食物与供品 靠人工补。 -->
+  <Labels name="tag" toName="video" allowEmpty="true">
+    <Label value="人物" background="#FFCDD2" hotkey="1"/>
+    <Label value="群体单元" background="#FFAB91" hotkey="2"/>
+    <Label value="身体部位" background="#FFE0B2" hotkey="3"/>
+    <Label value="器具与工具" background="#C8E6C9" hotkey="4"/>
+    <Label value="材料与制作物" background="#FFF9C4" hotkey="5"/>
+    <Label value="服饰与配饰" background="#F8BBD0" hotkey="6"/>
+    <Label value="食物与供品" background="#B3E5FC" hotkey="7"/>
+    <Label value="装置与标识物" background="#E1BEE7" hotkey="8"/>
+  </Labels>
+
+  <Header value="场景层（C）"/>
+  <View class="box">
+    <Header value="C-1 时间"/>
+    <Text name="q_c1" value="公历日期，农历/节日历法时间，节日相对位置（第几天、某环节前/中/后），昼夜"/>
+    <TextArea name="c1" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="如「农历正月十五，元宵节当天，夜间」。资料里提不出来的写「无法判断」"/>
+  </View>
+  <View class="box">
+    <Header value="C-2 地点"/>
+    <Text name="q_c2" value="行政区、村落或社区、具体场所、路线节点"/>
+    <TextArea name="c2" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="根据字幕、场记或其他资料可直接提取；提不出来写「无法判断」"/>
+  </View>
+  <View class="box">
+    <Header value="C-3 场所与空间用途"/>
+    <Text name="q_c3" value="识别室内外环境、场所类型及当前用途，如家庭厨房、村落广场、巡游道路，以及制作区、供奉区、宴饮区等"/>
+    <TextArea name="c3" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="如「村落广场（室外），巡游道路」。特写看不出环境时填「无法判断」"/>
+  </View>
+  <View class="box">
+    <Header value="C-4 镜头与画面呈现"/>
+    <Text name="q_c4" value="记录景别、拍摄角度及镜头运动，说明人物、物件和活动在画面中的呈现方式。景别或镜头运动明显变化时分时段记录；手持可与其他镜头运动并存"/>
+    <Choices name="c4_shot" toName="video" choice="multiple" required="false" showInline="true" title="景别">
+      <Choice value="远景"/><Choice value="全景"/><Choice value="中景"/><Choice value="近景"/><Choice value="特写"/>
+    </Choices>
+    <Choices name="c4_angle" toName="video" choice="multiple" required="false" showInline="true" title="角度">
+      <Choice value="平视"/><Choice value="俯拍"/><Choice value="仰拍"/>
+    </Choices>
+    <Choices name="c4_move" toName="video" choice="multiple" required="false" showInline="true" title="运动">
+      <Choice value="固定"/><Choice value="推拉"/><Choice value="摇移"/><Choice value="跟拍"/><Choice value="手持"/>
+    </Choices>
+    <TextArea name="c4" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="补充说明，如「0:00-0:20 跟拍巡游队伍（全景），0:20 后切近景拍神轿（手持）」"/>
+  </View>
+  <View class="box">
+    <Header value="C-5 声音"/>
+    <Text name="q_c5" value="语言、现场音乐、环境声及后期配音或配乐"/>
+    <Choices name="c5_lang" toName="video" choice="multiple" required="false" showInline="true" title="语言">
+      <Choice value="普通话"/><Choice value="具体方言"/><Choice value="民族语言"/><Choice value="无"/>
+    </Choices>
+    <Choices name="c5_music" toName="video" choice="multiple" required="false" showInline="true" title="音乐来源">
+      <Choice value="现场演奏"/><Choice value="后期配乐"/><Choice value="唱腔"/>
+    </Choices>
+    <TextArea name="c5" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="补充说明，如「同期声为当地方言交谈，另有现场唢呐演奏」。听不出就写「无法判断」"/>
+  </View>
+
+  <Header value="事件与叙事层（N）"/>
+  <View class="box">
+    <Header value="N-1 节日与活动识别"/>
+    <Text name="q_n1" value="记录节日名称、地方称谓及具体活动名称，识别制作、祭祀礼仪、巡游、表演、竞技、宴饮馈赠等活动类型"/>
+    <TextArea name="n1" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="如「节日：妈祖诞辰（地方称“妈生”）；活动：请神；类型：祭祀礼仪」。看不出来写「无法判断」"/>
+  </View>
+  <View class="box">
+    <Header value="N-2 活动阶段与流程"/>
+    <Text name="q_n2" value="确定片段处于筹备、开展或收尾阶段；依据具体节日程序，记录环节名称、先后顺序及并行关系"/>
+    <Choices name="n2_stage" toName="video" choice="single" required="false" showInline="true" title="阶段">
+      <Choice value="筹备"/><Choice value="开展"/><Choice value="收尾"/><Choice value="无法判断"/>
+    </Choices>
+    <Choices name="n2_rel" toName="video" choice="single" required="false" showInline="true" title="与前后事件的关系">
+      <Choice value="承接"/><Choice value="并行"/><Choice value="独立"/><Choice value="无法判断"/>
+    </Choices>
+    <TextArea name="n2" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="如「开展阶段，环节“请神”，承接“搭棚”」"/>
+  </View>
+  <View class="box">
+    <Header value="N-3 参与组织方式"/>
+    <Text name="q_n3" value="分别记录参与者在当前活动中的组织形式，以及有明确证据支持的参与者关系或组织归属"/>
+    <Choices name="n3_org" toName="video" choice="multiple" required="false" showInline="true" title="组织形式">
+      <Choice value="单人"/><Choice value="多人协作"/><Choice value="队列或编队"/>
+      <Choice value="多人独立参与"/><Choice value="混合"/><Choice value="无法判断"/>
+    </Choices>
+    <Choices name="n3_rel" toName="video" choice="multiple" required="false" showInline="true" title="参与者关系或组织归属">
+      <Choice value="家庭"/><Choice value="师徒"/><Choice value="邻里"/><Choice value="社区组织"/>
+      <Choice value="机构"/><Choice value="临时组合"/><Choice value="其他"/><Choice value="无法判断"/>
+    </Choices>
+    <TextArea name="n3" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="关系要有明确证据，如同期讲解、称呼、着装一致等；没有证据就选「无法判断」"/>
+  </View>
+  <View class="box">
+    <Header value="N-4 概括性描述"/>
+    <Text name="q_n4" value="使用完整语句描述片段中谁参与、发生了什么、涉及哪些主要物件，以及出现了哪些可见变化"/>
+    <TextArea name="n4" toName="video" required="false" editable="true" rows="3" maxsubmissions="1"
+              placeholder="如「六名男性村民在祠堂前广场抬神轿绕行，轿内神像由红绸覆盖，两侧有人持旌旗随行」"/>
+  </View>
+  <View class="box">
+    <Header value="N-5 影像呈现方式"/>
+    <Text name="q_n5" value="识别片段如何记录、讲述或展示活动"/>
+    <Choices name="n5_mode" toName="video" choice="multiple" required="false" showInline="true" title="方式">
+      <Choice value="现场记录"/><Choice value="口述访谈"/><Choice value="示范教学"/>
+      <Choice value="摆拍复现"/><Choice value="资料插入"/><Choice value="其他"/><Choice value="无法判断"/>
+    </Choices>
+    <TextArea name="n5" toName="video" required="false" editable="true" rows="2" maxsubmissions="1"
+              placeholder="如「口述访谈；受访者面向采访者讲述本村节日巡游路线的变化」"/>
+  </View>
+
+  <Header value="实体实例层（O）"/>
+  <Text name="tip_o" value="实体框见上方视频画面：人物（O-P）、群体单元（O-G）、身体部位（O-B）、器具与工具（O-T）、材料与制作物（O-M）、服饰与配饰（O-C）、食物与供品（O-F）、装置与标识物（O-D）。"/>
+  <View class="box">
+    <Header value="复核备注 · 不计分"/>
+    <TextArea name="note" toName="video" required="false" editable="true" rows="2" placeholder="存疑处、需要跟甲方确认的地方"/>
+  </View>
+</View>

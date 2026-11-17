@@ -1,0 +1,28 @@
+<View>
+  <Header value="非遗工艺视频 · 目标检测与跨帧跟踪 | 先检查预标注框，按 ← → 逐帧微调"/>
+  <Video name="video" value="$video" frameRate="25" sync="groupA"/>
+  <Labels name="tag" toName="video" allowEmpty="true">
+    <Label value="人物/传承人" background="#E1BEE7"/>
+    <Label value="人物/学徒"   background="#CE93D8"/>
+    <Label value="手部/左手"   background="#FFCDD2"/>
+    <Label value="手部/右手"   background="#EF9A9A"/>
+    <Label value="工具/剪刀"   background="#C8E6C9"/>
+    <Label value="工具/刻刀"   background="#A5D6A7"/>
+    <Label value="工具/绣针"   background="#81C784"/>
+    <Label value="工具/毛笔"   background="#66BB6A"/>
+    <Label value="工具/锤"     background="#4CAF50"/>
+    <Label value="材料/纸张"   background="#FFF9C4"/>
+    <Label value="材料/竹篾"   background="#FFF59D"/>
+    <Label value="材料/木料"   background="#FFE082"/>
+    <Label value="材料/泥坯"   background="#FFD54F"/>
+    <Label value="材料/丝线"   background="#FFCA28"/>
+    <Label value="成品/剪纸"   background="#B3E5FC"/>
+    <Label value="成品/绣品"   background="#81D4FA"/>
+    <Label value="成品/竹编"   background="#4FC3F7"/>
+    <Label value="设备/织机"   background="#D7CCC8"/>
+    <Label value="设备/皮影幕" background="#BCAAA4"/>
+  </Labels>
+  <VideoRectangle name="box" toName="video" smart="true"/>
+  <TextArea name="note" toName="video"
+            placeholder="遮挡 / 截断 / 存疑处备注，便于复核" editable="true"/>
+</View>

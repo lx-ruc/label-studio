@@ -1,0 +1,242 @@
+<View>
+  <Style>
+    .lsq { font-size: 13px; color: #555; line-height: 1.6; margin: 4px 0 8px; }
+    .box { border: 1px solid #e3e3e3; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  </Style>
+  <Header value="非遗影像 · 三层十二项文本标注"/>
+  <Text name="tip" value="上半部分：视频和要素框，AI 已圈出画面里的主要要素，只改错的和补漏的。下半部分：12 个文本问题，AI 已预填。"/>
+  <Video name="video" value="$video" frameRate="25"/>
+  <!-- 顺序按官方文档：Video → VideoRectangle → Labels。
+       Labels 的 toName 指向 video（文档就是这么写的），
+       但预标注里的 from_name 必须写标签控件的名字 tag，不能写 box —— 
+       写成 box 等于指向「对象」而不是「控件」，LS 找不到标签控件，
+       框能画出来、字也能显示，但点中框改不了标签。 -->
+  <VideoRectangle name="box" toName="video" smart="true"/>
+  <Labels name="tag" toName="video" allowEmpty="true">
+    <Label value="人物" background="#FFCDD2" hotkey="1"/>
+    <Label value="工具" background="#C8E6C9" hotkey="2"/>
+    <Label value="材料" background="#FFF9C4" hotkey="3"/>
+    <Label value="乐器" background="#B3E5FC" hotkey="4"/>
+    <Label value="法器/仪式物" background="#E1BEE7" hotkey="5"/>
+    <Label value="服饰/头饰" background="#F8BBD0" hotkey="6"/>
+    <Label value="设备" background="#D7CCC8" hotkey="7"/>
+    <Label value="场所元素" background="#DCE775" hotkey="8"/>
+  </Labels>
+  <Header value="以下为十二项文本标注"/>
+  <Header value="T1 客观表征 · 权重 0.35"/>
+  <View class="box">
+    <Header value="T1-1 物质要素检出 · 权重 0.09"/>
+    <Text name="q_T1-1" value="画面中是否出现与非遗相关的工具或材料？具体是什么？"/>
+    <TextArea name="T1-1_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="总体判断（有/无）+ 物件名称 + 所属类别，如「有；竹篾、刻刀；材料与工具」"/>
+    <Choices name="T1-1_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T1-2 动作要素检出 · 权重 0.10"/>
+    <Text name="q_T1-2" value="画面中是否出现具有非遗特征的身体动作？其发力方式和节奏如何？"/>
+    <TextArea name="T1-2_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="总体判断 + 动作名称 + 动作主体，如「有；劈篾、编织；老师傅」"/>
+    <Choices name="T1-2_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T1-3 人物与场景检出 · 权重 0.08"/>
+    <Text name="q_T1-3" value="画面中出现了哪类人物？是否存在仪式性场景或特定场景标识物？"/>
+    <TextArea name="T1-3_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="先判是否仪式性场景（是/否 + 依据），再写人物数量、身份、场景类型"/>
+    <Choices name="T1-3_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T1-4 听觉特征检出 · 权重 0.08"/>
+    <Text name="q_T1-4" value="音频中是否含方言/少数民族语、民俗乐器音、特征性环境音？"/>
+    <TextArea name="T1-4_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="有无同期声 / 音乐 / 解说 / 方言；听不清就三段都写「无法判断」，禁止猜语种"/>
+    <Choices name="T1-4_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <Header value="T2 中层语义 · 权重 0.50"/>
+  <View class="box">
+    <Header value="T2-1 核心叙事模式分类 · 权重 0.08"/>
+    <Text name="q_T2-1" value="该视频片段的主题叙事模式是什么？"/>
+    <Choices name="T2-1_label" toName="video" choice="single" required="true" showInline="true">
+      <Choice value="工序说明"/>
+      <Choice value="仪式场景"/>
+      <Choice value="传承叙事"/>
+      <Choice value="口述访谈"/>
+      <Choice value="日常生活嵌入型"/>
+      <Choice value="节庆民俗型"/>
+      <Choice value="集体协作生产"/>
+      <Choice value="商业交易场景"/>
+      <Choice value="准备与制作前序"/>
+      <Choice value="物质文化与符号扫描"/>
+      <Choice value="舞台展演"/>
+      <Choice value="其他"/>
+    </Choices>
+    <TextArea name="T2-1_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="先选主导叙事模式，再用一句话说明依据；次要模式写进补充说明"/>
+    <Choices name="T2-1_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T2-2 社会空间识别 · 权重 0.06"/>
+    <Text name="q_T2-2" value="该行为发生在什么物理与文化空间中？"/>
+    <Choices name="T2-2_label" toName="video" choice="single" required="true" showInline="true">
+      <Choice value="家庭作坊"/>
+      <Choice value="宗族祠堂"/>
+      <Choice value="农业生产空间"/>
+      <Choice value="现代舞台"/>
+      <Choice value="博物馆/展览馆"/>
+      <Choice value="集市/商业空间"/>
+      <Choice value="学校/传习所"/>
+      <Choice value="户外自然环境"/>
+      <Choice value="神圣空间"/>
+      <Choice value="流动空间/仪式路径"/>
+      <Choice value="数字/虚拟空间"/>
+      <Choice value="后勤/生活辅助空间"/>
+      <Choice value="其他"/>
+    </Choices>
+    <TextArea name="T2-2_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="社会空间类型 + 空间特征描述（室内/室外、公共/私人、仪式性标识物）"/>
+    <Choices name="T2-2_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T2-3 社会角色识别 · 权重 0.06"/>
+    <Text name="q_T2-3" value="画面中各人物分别扮演什么社会角色？判断依据是什么？"/>
+    <Choices name="T2-3_label" toName="video" choice="multiple" required="true" showInline="true">
+      <Choice value="老师傅/传承人"/>
+      <Choice value="成年学徒/传习者"/>
+      <Choice value="儿童传习者"/>
+      <Choice value="仪式委托人/东家"/>
+      <Choice value="社区成员"/>
+      <Choice value="外来观光者"/>
+      <Choice value="顾客/买家"/>
+      <Choice value="口述访谈者"/>
+      <Choice value="仪式主持者"/>
+      <Choice value="表演者"/>
+      <Choice value="记录者/研究者/地方官员"/>
+      <Choice value="家庭纽带/幕后支持者"/>
+    </Choices>
+    <TextArea name="T2-3_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="可多选。角色类型 + 性别（如「传承人[女]」）+ 代际关系；看不出来写「无法判断」"/>
+    <Choices name="T2-3_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T2-4 非遗门类识别 · 权重 0.30 · 零容错"/>
+    <Text name="q_T2-4" value="该影像内容归属于国家级非遗哪个门类？"/>
+    <Choices name="T2-4_label" toName="video" choice="single" required="true" showInline="true">
+      <Choice value="民间文学"/>
+      <Choice value="传统音乐"/>
+      <Choice value="传统舞蹈"/>
+      <Choice value="传统戏剧"/>
+      <Choice value="曲艺"/>
+      <Choice value="传统体育、游艺与杂技"/>
+      <Choice value="传统美术"/>
+      <Choice value="传统技艺"/>
+      <Choice value="传统医药"/>
+      <Choice value="民俗"/>
+    </Choices>
+    <TextArea name="T2-4_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="只填一个主门类，依据要指向画面可见证据；把握不大时次选写进补充说明"/>
+    <Choices name="T2-4_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <Header value="T3 深层解释 · 权重 0.15"/>
+  <View class="box">
+    <Header value="T3-1 专有文化符号识别 （A/B对比实验） · 权重 0.05"/>
+    <Text name="q_T3-1" value="模型能否在有/无外部知识辅助下识别出具体的非遗文化符号？"/>
+    <TextArea name="T3-1_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="只写画面里能指出具体位置的符号物；抽象文化断言一律不写"/>
+    <Choices name="T3-1_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T3-2 整体氛围与 情感感知 · 权重 0.03"/>
+    <Text name="q_T3-2" value="综合视觉与听觉信息，该片段呈现怎样的整体情感氛围？"/>
+    <Choices name="T3-2_label" toName="video" choice="single" required="true" showInline="true">
+      <Choice value="庄严肃穆"/>
+      <Choice value="欢快热烈"/>
+      <Choice value="日常烟火"/>
+      <Choice value="哀伤沉痛"/>
+      <Choice value="紧张专注"/>
+      <Choice value="虔诚敬畏"/>
+      <Choice value="温情怀旧"/>
+      <Choice value="混合难以归类"/>
+      <Choice value="其他"/>
+    </Choices>
+    <TextArea name="T3-2_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="整体情绪基调 + 触发该情绪的画面元素"/>
+    <Choices name="T3-2_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T3-3 隐性社会 价值连结 · 权重 0.03"/>
+    <Text name="q_T3-3" value="该活动背后体现了哪些隐性社会文化功能？"/>
+    <Choices name="T3-3_label" toName="video" choice="multiple" required="true" showInline="true">
+      <Choice value="文化传承与教育"/>
+      <Choice value="家庭与社区凝聚"/>
+      <Choice value="经济生计功能"/>
+      <Choice value="宗教与仪式功能"/>
+      <Choice value="身份认同与归属感"/>
+      <Choice value="生态与环境知识传递"/>
+      <Choice value="社会规范与道德教化"/>
+      <Choice value="其他（开放补充）"/>
+    </Choices>
+    <TextArea name="T3-3_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="可多选。这段影像承载的社会价值判断 + 判断依据"/>
+    <Choices name="T3-3_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="T3-4 社会网络与 互动关系推理 · 权重 0.04"/>
+    <Text name="q_T3-4" value="画面中人物之间（或人物与神圣对象之间）存在怎样的关系？"/>
+    <Choices name="T3-4_label" toName="video" choice="multiple" required="true" showInline="true">
+      <Choice value="师徒代际传承"/>
+      <Choice value="同辈协作"/>
+      <Choice value="表演者与观众互动"/>
+      <Choice value="家庭内部传授"/>
+      <Choice value="商业交换关系"/>
+      <Choice value="国家/机构介入关系"/>
+      <Choice value="人神关系"/>
+      <Choice value="竞争与展示关系"/>
+      <Choice value="社区监督与规范关系"/>
+      <Choice value="无明显关系"/>
+      <Choice value="其他"/>
+    </Choices>
+    <TextArea name="T3-4_out" toName="video" required="false" editable="true" rows="3" maxsubmissions="1" placeholder="可多选。人与人之间的关系类型 + 支撑该判断的互动细节"/>
+    <Choices name="T3-4_conf" toName="video" choice="single" required="true" showInline="true" title="置信度">
+      <Choice value="高"/>
+      <Choice value="中"/>
+      <Choice value="低"/>
+    </Choices>
+  </View>
+  <View class="box">
+    <Header value="复核备注 · 不计分"/>
+    <TextArea name="note" toName="video" required="false" editable="true" rows="2" placeholder="存疑处、需要跟甲方确认的地方"/>
+  </View>
+</View>

@@ -1,0 +1,13 @@
+# 密钥与临时产物，不进版本库
+.env
+.tmp/
+*.key
+key.env
+
+# 环境 / 缓存，不进版本库（可重建）
+envs/
+node_modules/
+__pycache__/
+*.bak
+.slidep/
+.workbuddy/

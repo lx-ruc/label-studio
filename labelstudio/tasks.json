@@ -1,0 +1,282 @@
+[
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/01_传统技艺_01.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "毛笔制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/01_传统技艺_02.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "毛笔制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/01_传统技艺_03.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "毛笔制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/01_传统技艺_04.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "毛笔制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/02_传统美术_01.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸工具与材料"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/02_传统美术_02.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸工具与材料"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/02_传统美术_03.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸工具与材料"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/02_传统美术_04.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸工具与材料"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/03_传统美术_01.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸剪法与刀法"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/03_传统美术_02.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸剪法与刀法"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/03_传统美术_03.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸剪法与刀法"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/03_传统美术_04.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "剪纸剪法与刀法"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/04_传统美术_01.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "苏绣刺绣"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/04_传统美术_02.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "苏绣刺绣"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/04_传统美术_03.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "苏绣刺绣"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/04_传统美术_04.mp4",
+      "meta_category": "传统美术",
+      "meta_source": "苏绣刺绣"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/05_传统技艺_01.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统木雕"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/05_传统技艺_02.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统木雕"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/05_传统技艺_03.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统木雕"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/05_传统技艺_04.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统木雕"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/06_传统技艺_01.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "苗银头饰制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/06_传统技艺_02.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "苗银头饰制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/06_传统技艺_03.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "苗银头饰制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/06_传统技艺_04.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "苗银头饰制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/07_传统技艺_01.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统竹编"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/07_传统技艺_02.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统竹编"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/07_传统技艺_03.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统竹编"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/07_传统技艺_04.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "传统竹编"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/08_传统技艺_01.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "油纸伞制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/08_传统技艺_02.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "油纸伞制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/08_传统技艺_03.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "油纸伞制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/08_传统技艺_04.mp4",
+      "meta_category": "传统技艺",
+      "meta_source": "油纸伞制作"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/09_传统戏剧_01.mp4",
+      "meta_category": "传统戏剧",
+      "meta_source": "皮影戏"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/09_传统戏剧_02.mp4",
+      "meta_category": "传统戏剧",
+      "meta_source": "皮影戏"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/09_传统戏剧_03.mp4",
+      "meta_category": "传统戏剧",
+      "meta_source": "皮影戏"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/09_传统戏剧_04.mp4",
+      "meta_category": "传统戏剧",
+      "meta_source": "皮影戏"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/10_民俗_01.mp4",
+      "meta_category": "民俗",
+      "meta_source": "打铁花"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/10_民俗_02.mp4",
+      "meta_category": "民俗",
+      "meta_source": "打铁花"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/10_民俗_03.mp4",
+      "meta_category": "民俗",
+      "meta_source": "打铁花"
+    }
+  },
+  {
+    "data": {
+      "video": "/data/local-files/?d=clips/10_民俗_04.mp4",
+      "meta_category": "民俗",
+      "meta_source": "打铁花"
+    }
+  }
+]
